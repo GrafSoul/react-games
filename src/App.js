@@ -1,11 +1,10 @@
 import React from 'react';
-import './App.scss';
-import RPSGame from './RPSGame/RPSGame'
+import RPSGame from './RPSGame/RPSGame';
 
 function App() {
-    return ( 
+    return (
         <div className="app">
-        <RPSGame />
+            <RPSGame />
         </div>
     );
 }
