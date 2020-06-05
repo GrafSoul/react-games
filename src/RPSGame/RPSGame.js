@@ -25,7 +25,7 @@ function RPSGame() {
     };
 
     const imageSelect = (select) => {
-        let url = `/images/rpsgame/${select}_image.png`;
+        let url = `images/rpsgame/${select}_image.png`;
         return <img src={url} alt={select} />;
     };
 
