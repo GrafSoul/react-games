@@ -9,8 +9,8 @@ function RPSGame() {
     const [computerCount, setComputerCount] = useState(0);
 
     useEffect(() => {
-        handleResults();
-    });
+        handleResults(); // eslint-disable-next-line
+    }, [userSelect]);
 
     const randomInteger = (min, max) => {
         let rand = min + Math.random() * (max + 1 - min);
@@ -45,32 +45,33 @@ function RPSGame() {
                 setResults('There was a tie');
             } else if (computerSelect === 'rock' && userSelect === 'paper') {
                 setResults('You Lost...');
+                setComputerCount(computerCount + 1);
             } else if (computerSelect === 'rock' && userSelect === 'scissors') {
                 setResults('You Win!');
+                setUserCount(userCount + 1);
             } else if (computerSelect === 'paper' && userSelect === 'rock') {
                 setResults('You Lost...');
+                setComputerCount(computerCount + 1);
             } else if (
                 computerSelect === 'paper' &&
                 userSelect === 'scissors'
             ) {
                 setResults('You Win!');
+                setUserCount(userCount + 1);
             } else if (computerSelect === 'scissors' && userSelect === 'rock') {
                 setResults('You Win!');
+                setUserCount(userCount + 1);
             } else if (
                 computerSelect === 'scissors' &&
                 userSelect === 'paper'
             ) {
                 setResults('You Lost...');
+                setComputerCount(computerCount + 1);
             }
         }
     };
 
     const handleReload = () => {
-        if (results === 'You Win!') {
-            setUserCount(userCount + 1);
-        } else if (results === 'You Lost...') {
-            setComputerCount(computerCount + 1);
-        }
         setComputerSelect('');
         setUserSelect('');
         setResults('');
@@ -79,7 +80,7 @@ function RPSGame() {
 
     return (
         <div className="rpsgame">
-            <h1>Rock, Paper, Scissors</h1>
+            <h3>Rock, Paper, Scissors</h3>
             <div className="rpsgame-choice">
                 <div className="rpsgame-choice__computer">
                     <h2>You: {userCount}</h2>
@@ -87,21 +88,27 @@ function RPSGame() {
                         className="rpsgame-choice__image"
                         id="computer-choice"
                     >
-                        {imageSelect(userSelect)}
+                        {userSelect === '' ? '?' : imageSelect(userSelect)}
                     </span>
                 </div>
 
                 <div className="rpsgame-choice__user">
                     <h2>Computer: {computerCount}</h2>
                     <span className="rpsgame-choice__image" id="user-choice">
-                        {imageSelect(computerSelect)}
+                        {computerSelect === ''
+                            ? '?'
+                            : imageSelect(computerSelect)}
                     </span>
                 </div>
             </div>
 
             <div className="result">
-                <h2>Result</h2>
-                <span className="result__text">{results}</span>
+                {results && (
+                    <>
+                        <h2>Result</h2>
+                        <span className="result__text">{results}</span>
+                    </>
+                )}
             </div>
 
             <div className="btn-group">
@@ -127,10 +134,7 @@ function RPSGame() {
                         </button>
                     </>
                 ) : (
-                    <button
-                        className="btn reload"
-                        onClick={() => handleReload()}
-                    >
+                    <button className="btn reload" onClick={handleReload}>
                         Reload
                     </button>
                 )}

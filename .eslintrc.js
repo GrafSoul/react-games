@@ -19,5 +19,7 @@ module.exports = {
         indent: ['error', 4],
         quotes: ['error', 'single'],
         semi: ['error', 'always'],
+        'react-hooks/rules-of-hooks': 'off',
+        'react-hooks/exhaustive-deps': 'warn',
     },
 };

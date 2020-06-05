@@ -4,7 +4,9 @@ import RPSGame from './RPSGame/RPSGame';
 function App() {
     return (
         <>
-            <header></header>
+            <header>
+                <h1>Old Super Games</h1>
+            </header>
 
             <main>
                 <RPSGame />

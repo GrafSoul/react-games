@@ -3,9 +3,9 @@
     padding: 0 30px;
     width: 500px;
 
-    h1 {
+    h3 {
         margin-bottom: 15px;
-        font-size: 1.8em;
+        font-size: 1.3em;
         text-align: center;
         font-weight: 300;
     }
@@ -38,6 +38,9 @@
             display: block;
             width: 120px;
             height: 120px;
+            text-align: center;
+            font-size: 5.4em;
+            color: $color-bgl;
         }
     }
 
@@ -53,7 +56,6 @@
             font-size: 1.2em;
             font-weight: 600;
         }
-
     }
 
     .btn-group {
@@ -70,8 +72,10 @@
     }
 }
 
-@media(max-width: 480px) {
+@media (max-width: 480px) {
     .rpsgame {
+        width: 320px;
+
         .rpsgame-choice {
             h2 {
                 font-size: 1.2em;
@@ -89,7 +93,6 @@
             &__text {
                 font-size: 1.2em;
             }
-
         }
 
         .btn {
